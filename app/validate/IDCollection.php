@@ -4,16 +4,16 @@ namespace App\validate;
 
 
 use App\Exceptions\ParameterException;
-use App\Rules\IsPositiveInteger;
+use App\Rules\CheckIDs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class IDMustBePositiveInt extends Validator
+class IDCollection extends Validator
 {
     public function goCheck(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => ['required', new IsPositiveInteger()],
+            'ids' => ['required', new CheckIDs()],
         ]);
         if ($validator->fails()) {
             $exception = new ParameterException([

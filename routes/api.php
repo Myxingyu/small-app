@@ -17,3 +17,5 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 Route::get('v1/banner', 'v1\BannerController@getBanner');
+Route::get('v1/theme', 'v1\ThemeController@getSimpleList');
+Route::get('v1/themeOne', 'v1\ThemeController@getComplexOne');

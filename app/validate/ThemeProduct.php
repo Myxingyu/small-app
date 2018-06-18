@@ -1,19 +1,25 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: xingyu
+ * Date: 2018/6/17
+ * Time: 13:36
+ */
 
 namespace App\validate;
 
 
 use App\Exceptions\ParameterException;
-use App\Rules\IsPositiveInteger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class IDMustBePositiveInt extends Validator
+class ThemeProduct extends Validator
 {
     public function goCheck(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => ['required', new IsPositiveInteger()],
+            't_id' => ['number'],
+            'p_id' => ['number'],
         ]);
         if ($validator->fails()) {
             $exception = new ParameterException([
