@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
-Route::get('v1/banner', 'v1\BannerController@getBanner');
+Route::get("v1/banner", "v1\BannerController@getBanner");
 Route::get('v1/theme', 'v1\ThemeController@getSimpleList');
 Route::get('v1/themeOne', 'v1\ThemeController@getComplexOne');
+Route::post('v1/token/user', 'v1\TokenController@getToken');
+Route::post('v1/product/by_category/paginate', 'v1\ProductController@getByCategory');

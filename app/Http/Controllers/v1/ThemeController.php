@@ -22,7 +22,7 @@ class ThemeController extends Controller
     public function getSimpleList(Request $request)
     {
         $validate = new IDCollection();
-        $validate->goCheck($request);
+        $validate->goCheck();
         $ids = $request->input('ids');
         $ids = explode(',', $ids);
 //        dd($ids);
@@ -43,7 +43,7 @@ class ThemeController extends Controller
     public function getComplexOne(Request $request)
     {
         $validate = new IDMustBePositiveInt();
-        $validate->goCheck($request);
+        $validate->goCheck();
         $id = $request->input('id');
         $theme = ThemeModel::getThemeWithProducts($id);
 //        dd($theme);
@@ -56,7 +56,7 @@ class ThemeController extends Controller
     public function addThemeProduct(Request $request)
     {
         $validate = new ThemeProduct();
-        $validate->goCheck($request);
+        $validate->goCheck();
 
     }
 }

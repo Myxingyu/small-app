@@ -4,17 +4,18 @@ namespace App\validate;
 
 
 use App\Exceptions\ParameterException;
-use App\Rules\CheckIDs;
+use App\Rules\IsPositiveInteger;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
-class IDCollection extends Validator
+class PagingParameter
 {
     public function goCheck()
     {
         $request = Request::instance();
         $validator = Validator::make($request->all(), [
-            'ids' => ['required', new CheckIDs()],
+            'page' => ['required', new IsPositiveInteger()],
+            'size' => ['required', new IsPositiveInteger()],
         ]);
         if ($validator->fails()) {
             $exception = new ParameterException([

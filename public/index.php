@@ -21,6 +21,10 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+//加载core库
+require '/data/wwwroot/Core/vendor/autoload.php';
+//加载core库
+
 require __DIR__.'/../vendor/autoload.php';
 
 /*

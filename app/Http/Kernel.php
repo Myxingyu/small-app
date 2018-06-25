@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\extra\CheckExclusiveScope;
+use App\Http\Middleware\extra\CheckPrimaryScope;
+use App\Http\Middleware\extra\CheckSuperScope;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -59,5 +62,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'checkExclusiveScope' => CheckExclusiveScope::class,
+        'checkPrimaryScope' => CheckPrimaryScope::class,
+        'checkSuperScope' => CheckSuperScope::class
     ];
 }

@@ -20,7 +20,7 @@ class BannerController extends Controller
     public function getBanner(Request $request)
     {
         $validate = new IDMustBePositiveInt();
-        $validate->goCheck($request);
+        $validate->goCheck();
         $id = $request->input('id');
         $banner = Banner::getBannerById($id);
         if ($banner->isEmpty()) {
