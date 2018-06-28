@@ -8,6 +8,7 @@ use App\enum\ScopeEnum;
 use App\Exceptions\TokenException;
 use App\Exceptions\WeChatException;
 use App\User;
+use Core\tools\Curl;
 use Illuminate\Support\Facades\Redis;
 
 class UserToken extends Token
@@ -27,8 +28,9 @@ class UserToken extends Token
 
     public function get()
     {
-        $result = $this->curl_get($this->wxLoginUrl);
-        $wxResult = json_decode($result, true);
+//        $result = $this->curl_get($this->wxLoginUrl);
+        $result = Curl::Request('GET', $this->wxLoginUrl);
+        $wxResult = $result['json'];
         if (empty($wxResult)) {
             throw new \Exception('获取session_key及openID时异常，微信内部错误');
         } else {
